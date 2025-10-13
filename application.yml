@@ -1,5 +1,5 @@
 server: # REST and WS server
-  port: 2333
+  port: 433
   address: 0.0.0.0
   http2:
     enabled: false # Whether to enable HTTP/2 support
@@ -31,7 +31,7 @@ lavalink:
 #  defaultPluginRepository: "https://maven.lavalink.dev/releases" # optional, defaults to the Lavalink release repository
 #  defaultPluginSnapshotRepository: "https://maven.lavalink.dev/snapshots" # optional, defaults to the Lavalink snapshot repository
   server:
-    password: "youshallnotpass"
+    password: LAVALINK_SERVER_PASSWORD
     sources:
       # The default Youtube source is now deprecated and won't receive further updates. Please use https://github.com/lavalink-devs/youtube-source#plugin instead.
       youtube: false
