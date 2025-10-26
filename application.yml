@@ -4,11 +4,6 @@ server: # REST and WS server
   http2:
     enabled: false # Whether to enable HTTP/2 support
 plugins:
-  youtube:
-    enabled: true
-    proxy:
-      host: https://yt-proxy-mf1q.onrender.com
-      useOAuth: true
   lavasearch:
     sources:
       youtube: true
@@ -33,6 +28,8 @@ lavalink:
           - ANDROID_VR
           - WEB
           - WEBEMBEDDED 
+          - TV
+          - TVHTML5EMBEDDED
       oauth:
         enabled: true
         debug: true
