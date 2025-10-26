@@ -1,15 +1,25 @@
-# Use the official Lavalink v4 image as the base
-FROM ghcr.io/lavalink-devs/lavalink:4-alpine
+# Use an official OpenJDK runtime as a base image
+FROM eclipse-temurin:17-jdk-alpine
 
-# Set environment variables (optional)
-ENV LAVALINK_SERVER_PASSWORD="yourpassword"
+# Set working directory
+WORKDIR /opt/Lavalink
 
-# Optional: copy a custom configuration file if you have one
-# Make sure you have an application.yml in the same folder
+# Add the Lavalink jar (you need to download it to this folder or build)
+# You can also use ARG to specify version
+ARG LAVALINK_VERSION=4.0.8
+ADD https://github.com/lavalink-devs/Lavalink/releases/download/${LAVALINK_VERSION}/Lavalink.jar Lavalink.jar
+
+# Copy your application.yml (config file)
 COPY application.yml /opt/Lavalink/application.yml
 
-# Expose the default Lavalink port
+# Optional: copy plugins folder if you use plugins
+COPY plugins/ /opt/Lavalink/plugins/
+
+# Expose default port
 EXPOSE 2333
 
-# The base image already defines the default command to run Lavalink,
-# so you don’t need to set CMD unless you want to override it
+# Use environment variable for Java options (heap size etc)
+ENV _JAVA_OPTIONS="-Xmx512M"
+
+# Run the jar
+CMD ["java", "-jar", "Lavalink.jar"]
