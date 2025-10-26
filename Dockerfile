@@ -16,7 +16,7 @@ COPY application.yml /opt/Lavalink/application.yml
 COPY plugins/ /opt/Lavalink/plugins/
 
 # Expose default port
-EXPOSE 2333
+EXPOSE 443
 
 # Use environment variable for Java options (heap size etc)
 ENV _JAVA_OPTIONS="-Xmx512M"
