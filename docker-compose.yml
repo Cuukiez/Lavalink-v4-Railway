@@ -13,4 +13,3 @@ services:
       - LAVALINK_SERVER_PASSWORD=yoursecretpassword
     volumes:
       - ./application.yml:/opt/Lavalink/application.yml
-      - ./plugins/:/opt/Lavalink/plugins/
