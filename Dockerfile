@@ -13,7 +13,7 @@ ADD https://github.com/lavalink-devs/Lavalink/releases/download/${LAVALINK_VERSI
 COPY application.yml /opt/Lavalink/application.yml
 
 # Optional: copy plugins folder if you use plugins
-#COPY plugins/ /opt/Lavalink/plugins/
+COPY plugins/ /opt/Lavalink/plugins/
 
 # Expose default port
 EXPOSE 443
