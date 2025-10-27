@@ -30,7 +30,7 @@ lavalink:
           - WEBEMBEDDED 
           - TV
           - TVHTML5EMBEDDED
-        oauth-token: /etc/secrets/config.json
+        oauth-token: ./etc/secrets/config.json
       oauth:
         enabled: true
         debug: true
