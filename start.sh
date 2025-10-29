@@ -1,23 +1,15 @@
 #!/bin/sh
-set -euo pipefail
+set -e
 
-echo "Starting Lavalink with OAuth token setup..."
+echo "Starting Lavalink with OAuth..."
 
-# Create directory for token
-mkdir -p /opt/lavalink
-
-# Write the token JSON from the environment variable
-echo "$LAVALINK_YT_TOKEN" > /opt/lavalink/config.json
-
-# Set permissions
-chmod 600 /opt/lavalink/config.json
-
-# Confirm token file exists
-if [ ! -s /opt/lavalink/token.json ]; then
-  echo "❌ Failed to write config.json"
-  exit 1
+# If OAuth token is set in Render environment, save it to file
+if [ -n "$LAVALINK_YT_TOKEN" ]; then
+  echo "$LAVALINK_YT_TOKEN" > /opt/Lavalink/oauth.json
+  echo "✅ OAuth token saved to oauth.json"
+else
+  echo "⚠️ No LAVALINK_YT_TOKEN provided!"
 fi
 
 # Start Lavalink
-echo "✅ Config written, starting Lavalink..."
 java -jar Lavalink.jar
